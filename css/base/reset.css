@@ -1,0 +1,61 @@
+/*
+    ================================================
+    RESET.CSS — Normaliza estilos entre navegadores
+    ================================================
+    Cada navegador (Chrome, Firefox, Safari) aplica
+    estilos padrão diferentes. O reset remove essas
+    diferenças para partirmos de uma base limpa.
+
+    Este é um reset MODERNO (não o antigo "* { margin: 0 }"
+    que era muito agressivo).
+*/
+
+/* Box-sizing: border-box faz com que padding e border
+   NÃO aumentem o tamanho total do elemento.
+   Ex: width: 300px + padding: 20px = 300px (não 340px) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove margens e paddings padrão de elementos comuns */
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li,
+figure, figcaption, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove estilos de lista padrão (bullets) */
+ul, ol {
+    list-style: none;
+}
+
+/* Links herdam cor do pai e não têm underline */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Imagens e vídeos são responsivos por padrão */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Inputs e buttons herdam fonte do pai */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Remove animações para quem prefere movimento reduzido
+   (acessibilidade — respeita preferências do sistema) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

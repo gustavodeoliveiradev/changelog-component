@@ -1,0 +1,60 @@
+/*
+    ================================================
+    TYPOGRAPHY.CSS — Estilos tipográficos base
+    ================================================
+    Define a escala tipográfica e estilos de texto
+    que se aplicam globalmente.
+*/
+
+html {
+    /* Define o tamanho base da fonte como 16px */
+    font-size: 16px;
+
+    /* Suaviza a renderização das fontes */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-body);
+
+    /* Melhora a legibilidade em mobile */
+    text-rendering: optimizeLegibility;
+}
+
+/* Títulos com escala tipográfica */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-lg); }
+h4 { font-size: var(--font-size-base); }
+
+/* Parágrafos */
+p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Elementos inline semânticos */
+strong, b {
+    font-weight: var(--font-weight-bold);
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* Time element */
+time {
+    font-variant-numeric: tabular-nums;
+}

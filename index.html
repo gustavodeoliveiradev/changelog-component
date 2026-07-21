@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Changelog interativo e responsivo para acompanhar as atualizações do projeto.">
+    <title>Changelog — Project Updates</title>
+
+    <!-- 
+        ============================================
+        CSS Principal — Importa todos os módulos
+        ============================================
+        Usamos um único arquivo main.css que importa
+        todos os outros. Isso mantém o HTML limpo
+        e organizado.
+    -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Fonte do Google Fonts — Inter (moderna e legível) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 
+        ============================================
+        HEADER — Cabeçalho do Changelog
+        ============================================
+        <header> é a tag semântica correta para
+        introduções e navegação principal.
+    -->
+    <header class="changelog-header">
+        <div class="container">
+            <span class="header__label">📋 Registro de Mudanças</span>
+            <h1 class="header__title">Changelog</h1>
+            <p class="header__description">
+                Acompanhe todas as atualizações, melhorias e correções do projeto. 
+                Mantenha-se informado sobre o que há de novo.
+            </p>
+        </div>
+    </header>
+
+    <!-- 
+        ============================================
+        MAIN — Conteúdo Principal
+        ============================================
+        <main> envolve o conteúdo principal da página.
+        Só deve haver UM <main> por página.
+    -->
+    <main class="changelog-main">
+        <div class="container">
+
+            <!-- 
+                ========================================
+                TIMELINE — Linha do Tempo de Releases
+                ========================================
+                <section> agrupa conteúdo tematicamente relacionado.
+                ARIA role="feed" indica que é um feed de atualizações
+                (acessibilidade para leitores de tela).
+            -->
+            <section class="timeline" aria-label="Histórico de versões" role="feed" aria-live="polite">
+
+                <!-- 
+                    ====================================
+                    RELEASE CARD — Card de uma Versão
+                    ====================================
+                    <article> é a tag semântica para conteúdo
+                    independente e autocontido. Cada release é
+                    um "artigo" por si só.
+                -->
+                <article class="release-card" data-version="2.5.0">
+                    <!-- Linha vertical da timeline (pseudo-elemento CSS) -->
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <!-- Cabeçalho do card: versão + data -->
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.5.0</span>
+                                <time class="release-card__date" datetime="2026-07-15">
+                                    15 de Julho, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">Dashboard Analytics & Dark Mode</h2>
+                        </header>
+
+                        <!-- Lista de mudanças -->
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--feature" aria-hidden="true">✨</span>
+                                Novas Funcionalidades
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Novo dashboard de analytics com gráficos interativos
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Suporte completo a tema escuro (dark mode)
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Exportação de relatórios em PDF e CSV
+                                </li>
+                            </ul>
+
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--improvement" aria-hidden="true">🚀</span>
+                                Melhorias
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--improvement">improvement</span>
+                                    Performance da página inicial otimizada em 40%
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--improvement">improvement</span>
+                                    Navegação mobile redesenhada
+                                </li>
+                            </ul>
+
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--bugfix" aria-hidden="true">🐛</span>
+                                Correções
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--bugfix">bugfix</span>
+                                    Corrigido problema de cache em formulários
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Release 2.4.0 -->
+                <article class="release-card" data-version="2.4.0">
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.4.0</span>
+                                <time class="release-card__date" datetime="2026-06-28">
+                                    28 de Junho, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">API v2 & Webhooks</h2>
+                        </header>
+
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--feature" aria-hidden="true">✨</span>
+                                Novas Funcionalidades
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    API REST v2 com documentação Swagger
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Suporte a webhooks para integrações
+                                </li>
+                            </ul>
+
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--improvement" aria-hidden="true">🚀</span>
+                                Melhorias
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--improvement">improvement</span>
+                                    Tempo de resposta da API reduzido em 60%
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Release 2.3.1 -->
+                <article class="release-card" data-version="2.3.1">
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.3.1</span>
+                                <time class="release-card__date" datetime="2026-06-10">
+                                    10 de Junho, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">Hotfix: Autenticação</h2>
+                        </header>
+
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--bugfix" aria-hidden="true">🐛</span>
+                                Correções
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--bugfix">bugfix</span>
+                                    Corrigida falha de segurança no OAuth2
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--bugfix">bugfix</span>
+                                    Sessões expirando incorretamente em dispositivos móveis
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Release 2.3.0 -->
+                <article class="release-card" data-version="2.3.0">
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.3.0</span>
+                                <time class="release-card__date" datetime="2026-05-20">
+                                    20 de Maio, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">Multi-idioma & Notificações</h2>
+                        </header>
+
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--feature" aria-hidden="true">✨</span>
+                                Novas Funcionalidades
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Suporte a 12 idiomas (i18n completo)
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Sistema de notificações push
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Filtros avançados de busca
+                                </li>
+                            </ul>
+
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--improvement" aria-hidden="true">🚀</span>
+                                Melhorias
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--improvement">improvement</span>
+                                    Interface de configurações redesenhada
+                                </li>
+                            </ul>
+
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--bugfix" aria-hidden="true">🐛</span>
+                                Correções
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--bugfix">bugfix</span>
+                                    Scroll infinito travando em iOS
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Release 2.2.0 -->
+                <article class="release-card" data-version="2.2.0">
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.2.0</span>
+                                <time class="release-card__date" datetime="2026-04-15">
+                                    15 de Abril, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">Colaboração em Tempo Real</h2>
+                        </header>
+
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--feature" aria-hidden="true">✨</span>
+                                Novas Funcionalidades
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Edição colaborativa em tempo real
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Comentários em threads
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Release 2.1.0 -->
+                <article class="release-card" data-version="2.1.0">
+                    <div class="release-card__marker" aria-hidden="true">
+                        <span class="marker__dot"></span>
+                    </div>
+
+                    <div class="release-card__content">
+                        <header class="release-card__header">
+                            <div class="release-card__meta">
+                                <span class="badge badge--version">v2.1.0</span>
+                                <time class="release-card__date" datetime="2026-03-01">
+                                    1 de Março, 2026
+                                </time>
+                            </div>
+                            <h2 class="release-card__title">Lançamento Inicial v2</h2>
+                        </header>
+
+                        <div class="release-card__changes">
+                            <h3 class="changes__category">
+                                <span class="changes__icon changes__icon--feature" aria-hidden="true">✨</span>
+                                Novas Funcionalidades
+                            </h3>
+                            <ul class="changes__list">
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Redesign completo da interface
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Sistema de plugins extensível
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Integração com GitHub e GitLab
+                                </li>
+                                <li class="changes__item">
+                                    <span class="changes__tag changes__tag--feature">feature</span>
+                                    Templates de projetos pré-configurados
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 
+        ============================================
+        FOOTER — Rodapé
+        ============================================
+    -->
+    <footer class="changelog-footer">
+        <div class="container">
+            <p class="footer__text">
+                Changelog mantido com 💜 pela equipe de desenvolvimento.
+            </p>
+            <p class="footer__version">
+                Última atualização: <time datetime="2026-07-15">15 de Julho, 2026</time>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 
+        ============================================
+        SCRIPTS
+        ============================================
+        defer: carrega o JS sem bloquear o render da página
+    -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>

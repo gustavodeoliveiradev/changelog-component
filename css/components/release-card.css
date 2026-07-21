@@ -1,0 +1,62 @@
+/*
+    ================================================
+    RELEASE-CARD.CSS — Cards de versão
+    ================================================
+    AQUI VAMOS TRABALHAR NO DIA 4!
+    Por enquanto, estrutura mínima.
+*/
+
+.release-card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-8);
+    padding: var(--space-6);
+}
+
+.release-card__header {
+    margin-bottom: var(--space-4);
+}
+
+.release-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.release-card__date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+.release-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+.changes__category {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+}
+
+.changes__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.changes__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}

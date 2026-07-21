@@ -1,0 +1,30 @@
+/*
+    ================================================
+    MAIN.CSS — Arquivo de entrada do CSS
+    ================================================
+    Este arquivo importa TODOS os módulos CSS em
+    ordem específica. A ordem importa!
+
+    1. Base: reset, variáveis, tipografia
+    2. Layout: estrutura da página
+    3. Componentes: elementos reutilizáveis
+
+    Por que separar? Cada arquivo tem UMA
+    responsabilidade (Single Responsibility Principle).
+    Isso facilita manutenção e debugging.
+*/
+
+/* ========== BASE ========== */
+@import url('base/reset.css');
+@import url('base/variables.css');
+@import url('base/typography.css');
+
+/* ========== LAYOUT ========== */
+@import url('layout/layout.css');
+@import url('layout/responsive.css');
+
+/* ========== COMPONENTS ========== */
+@import url('components/timeline.css');
+@import url('components/release-card.css');
+@import url('components/badges.css');
+@import url('components/animations.css');

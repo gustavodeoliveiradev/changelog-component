@@ -1,0 +1,75 @@
+/*
+    ================================================
+    LAYOUT.CSS — Estrutura visual da página
+    ================================================
+    AQUI VAMOS TRABALHAR NO DIA 3!
+    Por enquanto, só estrutura mínima.
+*/
+
+/* Container centralizado com largura máxima */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+/* Header */
+.changelog-header {
+    background-color: var(--color-bg-header);
+    padding: var(--space-16) 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-timeline-line);
+}
+
+.header__label {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.header__title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-extrabold);
+    margin-bottom: var(--space-4);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main */
+.changelog-main {
+    padding: var(--space-12) 0;
+}
+
+/* Footer */
+.changelog-footer {
+    background-color: var(--color-bg-footer);
+    padding: var(--space-8) 0;
+    text-align: center;
+}
+
+.footer__text {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-2);
+}
+
+.footer__version {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+}
