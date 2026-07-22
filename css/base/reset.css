@@ -10,46 +10,89 @@
     que era muito agressivo).
 */
 
-/* Box-sizing: border-box faz com que padding e border
-   NÃO aumentem o tamanho total do elemento.
-   Ex: width: 300px + padding: 20px = 300px (não 340px) */
+/*
+    BOX-SIZING: BORDER-BOX
+    ──────────────────────
+    Por padrão, o navegador calcula largura assim:
+    width + padding + border = largura total
+
+    Com border-box, o padding e border "entram" dentro
+    do width. Então width: 300px é SEMPRE 300px!
+
+    Isso evita surpresas quando adicionamos padding.
+*/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Remove margens e paddings padrão de elementos comuns */
+/*
+    REMOVER MARGENS E PADDINGS PADRÃO
+    ─────────────────────────────────
+    Cada navegador aplica valores diferentes.
+    Ex: <h1> no Chrome tem margin-top: 0.67em,
+    no Firefox pode ser diferente.
+    Resetamos tudo pra partirmos do zero.
+*/
 html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li,
 figure, figcaption, blockquote, dl, dd {
     margin: 0;
     padding: 0;
 }
 
-/* Remove estilos de lista padrão (bullets) */
+/*
+    REMOVER ESTILOS DE LISTA
+    ────────────────────────
+    <ul> e <ol> vêm com bullets/pontos por padrão.
+    Nós vamos estilizar nossas próprias listas.
+*/
 ul, ol {
     list-style: none;
 }
 
-/* Links herdam cor do pai e não têm underline */
+/*
+    LINKS LIMPOS
+    ────────────
+    Remove o sublinhado padrão e faz herdar a cor
+    do elemento pai. Assim o link se comporta como
+    texto normal até querermos estilizar.
+*/
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Imagens e vídeos são responsivos por padrão */
+/*
+    MÍDIA RESPONSIVA
+    ────────────────
+    display: block remove o espaço extra que imagens
+    inline deixam embaixo (espaço de descender).
+    max-width: 100% impede que imagens estourem
+    containers em telas pequenas.
+*/
 img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
 }
 
-/* Inputs e buttons herdam fonte do pai */
+/*
+    FORMULÁRIOS HERDAM FONTE
+    ────────────────────────
+    Inputs e buttons NÃO herdam fonte do body por
+    padrão no iOS. Isso força a herança.
+*/
 input, button, textarea, select {
     font: inherit;
 }
 
-/* Remove animações para quem prefere movimento reduzido
-   (acessibilidade — respeita preferências do sistema) */
+/*
+    REDUCED MOTION (Acessibilidade!)
+    ────────────────────────────────
+    Algumas pessoas têm vertigem/epilepsia e
+    desativam animações no sistema operacional.
+    Este media query RESPEITA essa preferência!
+*/
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

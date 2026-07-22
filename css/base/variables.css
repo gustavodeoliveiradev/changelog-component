@@ -1,6 +1,6 @@
 /*
     ================================================
-    VARIABLES.CSS — Design Tokens
+    VARIABLES.CSS — Design Tokens Completos
     ================================================
     Variáveis CSS (custom properties) são como
     "variáveis de design". Elas centralizam valores
@@ -16,46 +16,107 @@
 */
 
 :root {
-    /* ========== CORES PRINCIPAIS ========== */
-    --color-primary: #6366f1;        /* Indigo — cor principal */
-    --color-primary-light: #818cf8;  /* Versão mais clara */
-    --color-primary-dark: #4f46e5;   /* Versão mais escura */
+    /* ═══════════════════════════════════════════
+       CORES — MODO CLARO (padrão)
+       ═══════════════════════════════════════════ */
 
-    /* ========== CORES DE FUNDO ========== */
-    --color-bg-body: #f8fafc;        /* Fundo da página */
-    --color-bg-card: #ffffff;        /* Fundo dos cards */
-    --color-bg-header: #ffffff;      /* Fundo do header */
-    --color-bg-footer: #1e293b;      /* Fundo do footer */
+    /* Primária (Indigo) */
+    --color-primary-50: #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #818cf8;
+    --color-primary-500: #6366f1;   /* Principal */
+    --color-primary-600: #4f46e5;   /* Hover */
+    --color-primary-700: #4338ca;
+    --color-primary-800: #3730a3;
+    --color-primary-900: #312e81;
 
-    /* ========== CORES DE TEXTO ========== */
-    --color-text-primary: #0f172a;   /* Títulos */
-    --color-text-secondary: #475569; /* Descrições */
-    --color-text-muted: #94a3b8;     /* Datas, labels */
-    --color-text-inverse: #ffffff;   /* Texto em fundo escuro */
+    /* Neutras (escala de cinza) */
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
 
-    /* ========== CORES DE TAGS ========== */
-    --color-tag-feature: #10b981;    /* Verde — novas funcionalidades */
-    --color-tag-feature-bg: #ecfdf5;
-    --color-tag-improvement: #3b82f6; /* Azul — melhorias */
-    --color-tag-improvement-bg: #eff6ff;
-    --color-tag-bugfix: #ef4444;     /* Vermelho — correções */
-    --color-tag-bugfix-bg: #fef2f2;
+    /* Semânticas (referenciam as acima) */
+    --color-bg-body: var(--color-gray-50);
+    --color-bg-card: #ffffff;
+    --color-bg-header: #ffffff;
+    --color-bg-footer: var(--color-gray-800);
+    --color-bg-code: var(--color-gray-100);
 
-    /* ========== CORES DA TIMELINE ========== */
-    --color-timeline-line: #e2e8f0;  /* Linha vertical */
-    --color-timeline-dot: #6366f1;   /* Bolinhas */
-    --color-timeline-dot-border: #ffffff;
+    --color-text-primary: var(--color-gray-900);
+    --color-text-secondary: var(--color-gray-600);
+    --color-text-muted: var(--color-gray-400);
+    --color-text-inverse: #ffffff;
+    --color-text-link: var(--color-primary-600);
 
-    /* ========== TIPOGRAFIA ========== */
-    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Tags */
+    --color-tag-feature: #059669;
+    --color-tag-feature-bg: #d1fae5;
+    --color-tag-feature-border: #a7f3d0;
+    --color-tag-improvement: #2563eb;
+    --color-tag-improvement-bg: #dbeafe;
+    --color-tag-improvement-border: #bfdbfe;
+    --color-tag-bugfix: #dc2626;
+    --color-tag-bugfix-bg: #fee2e2;
+    --color-tag-bugfix-border: #fecaca;
+    --color-tag-breaking: #d97706;
+    --color-tag-breaking-bg: #fef3c7;
+    --color-tag-breaking-border: #fde68a;
+
+    /* Timeline */
+    --color-timeline-line: var(--color-gray-200);
+    --color-timeline-dot: var(--color-primary-500);
+    --color-timeline-dot-ring: var(--color-primary-100);
+
+    /* ═══════════════════════════════════════════
+       CORES — MODO ESCURO (tokens preparados)
+       ═══════════════════════════════════════════ */
+
+    --color-dark-bg-body: var(--color-gray-900);
+    --color-dark-bg-card: var(--color-gray-800);
+    --color-dark-bg-header: var(--color-gray-800);
+    --color-dark-bg-footer: #020617;
+    --color-dark-bg-code: var(--color-gray-800);
+
+    --color-dark-text-primary: var(--color-gray-50);
+    --color-dark-text-secondary: var(--color-gray-300);
+    --color-dark-text-muted: var(--color-gray-500);
+    --color-dark-text-inverse: var(--color-gray-900);
+    --color-dark-text-link: var(--color-primary-400);
+
+    --color-dark-timeline-line: var(--color-gray-700);
+    --color-dark-timeline-dot: var(--color-primary-400);
+    --color-dark-timeline-dot-ring: var(--color-primary-900);
+
+    /* ═══════════════════════════════════════════
+       TIPOGRAFIA
+       ═══════════════════════════════════════════ */
+
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                   'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono: 'Fira Code', 'JetBrains Mono', 'SF Mono',
+                        Consolas, 'Liberation Mono', Menlo, monospace;
+
+    /* Escala tipográfica (1.25 ratio — Major Third) */
+    --font-size-2xs: 0.625rem;   /* 10px */
     --font-size-xs: 0.75rem;     /* 12px */
     --font-size-sm: 0.875rem;    /* 14px */
     --font-size-base: 1rem;      /* 16px */
     --font-size-lg: 1.125rem;    /* 18px */
     --font-size-xl: 1.25rem;     /* 20px */
     --font-size-2xl: 1.5rem;     /* 24px */
-    --font-size-3xl: 2rem;       /* 32px */
-    --font-size-4xl: 2.5rem;     /* 40px */
+    --font-size-3xl: 1.875rem;   /* 30px */
+    --font-size-4xl: 2.25rem;    /* 36px */
+    --font-size-5xl: 3rem;       /* 48px */
+    --font-size-6xl: 3.75rem;    /* 60px */
 
     --font-weight-light: 300;
     --font-weight-regular: 400;
@@ -63,43 +124,127 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --font-weight-black: 900;
 
+    --line-height-none: 1;
     --line-height-tight: 1.25;
+    --line-height-snug: 1.375;
     --line-height-normal: 1.5;
-    --line-height-relaxed: 1.75;
+    --line-height-relaxed: 1.625;
+    --line-height-loose: 2;
 
-    /* ========== ESPAÇAMENTOS ========== */
-    --space-1: 0.25rem;   /* 4px */
-    --space-2: 0.5rem;    /* 8px */
-    --space-3: 0.75rem;   /* 12px */
-    --space-4: 1rem;      /* 16px */
-    --space-5: 1.25rem;   /* 20px */
-    --space-6: 1.5rem;    /* 24px */
-    --space-8: 2rem;      /* 32px */
-    --space-10: 2.5rem;   /* 40px */
-    --space-12: 3rem;     /* 48px */
-    --space-16: 4rem;     /* 64px */
-    --space-20: 5rem;     /* 80px */
+    --letter-spacing-tighter: -0.05em;
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+    --letter-spacing-wider: 0.05em;
+    --letter-spacing-widest: 0.1em;
 
-    /* ========== BORDAS ========== */
-    --radius-sm: 0.25rem;   /* 4px */
-    --radius-md: 0.5rem;    /* 8px */
-    --radius-lg: 0.75rem;   /* 12px */
-    --radius-xl: 1rem;      /* 16px */
-    --radius-full: 9999px;  /* Círculo */
+    /* ═══════════════════════════════════════════
+       ESPAÇAMENTOS (escala de 4px base)
+       ═══════════════════════════════════════════ */
 
-    /* ========== SOMBRAS ========== */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --space-px: 1px;
+    --space-0: 0;
+    --space-0-5: 0.125rem;  /* 2px */
+    --space-1: 0.25rem;     /* 4px */
+    --space-1-5: 0.375rem;  /* 6px */
+    --space-2: 0.5rem;      /* 8px */
+    --space-2-5: 0.625rem;  /* 10px */
+    --space-3: 0.75rem;     /* 12px */
+    --space-3-5: 0.875rem;  /* 14px */
+    --space-4: 1rem;        /* 16px */
+    --space-5: 1.25rem;     /* 20px */
+    --space-6: 1.5rem;      /* 24px */
+    --space-7: 1.75rem;     /* 28px */
+    --space-8: 2rem;        /* 32px */
+    --space-9: 2.25rem;     /* 36px */
+    --space-10: 2.5rem;     /* 40px */
+    --space-11: 2.75rem;    /* 44px */
+    --space-12: 3rem;       /* 48px */
+    --space-14: 3.5rem;     /* 56px */
+    --space-16: 4rem;       /* 64px */
+    --space-20: 5rem;       /* 80px */
+    --space-24: 6rem;       /* 96px */
+    --space-28: 7rem;       /* 112px */
+    --space-32: 8rem;       /* 128px */
+    --space-36: 9rem;       /* 144px */
+    --space-40: 10rem;      /* 160px */
+    --space-44: 11rem;      /* 176px */
+    --space-48: 12rem;      /* 192px */
+    --space-52: 13rem;      /* 208px */
+    --space-56: 14rem;      /* 224px */
+    --space-60: 15rem;      /* 240px */
+    --space-64: 16rem;      /* 256px */
+    --space-72: 18rem;      /* 288px */
+    --space-80: 20rem;      /* 320px */
+    --space-96: 24rem;      /* 384px */
 
-    /* ========== LAYOUT ========== */
+    /* ═══════════════════════════════════════════
+       BORDAS
+       ═══════════════════════════════════════════ */
+
+    --radius-none: 0;
+    --radius-sm: 0.125rem;   /* 2px */
+    --radius-md: 0.375rem;   /* 6px */
+    --radius-lg: 0.5rem;     /* 8px */
+    --radius-xl: 0.75rem;    /* 12px */
+    --radius-2xl: 1rem;      /* 16px */
+    --radius-3xl: 1.5rem;    /* 24px */
+    --radius-full: 9999px;   /* Círculo */
+
+    /* ═══════════════════════════════════════════
+       SOMBRAS
+       ═══════════════════════════════════════════ */
+
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+    /* Sombras específicas para cards */
+    --shadow-card: 0 1px 3px rgb(0 0 0 / 0.1), 0 1px 2px rgb(0 0 0 / 0.06);
+    --shadow-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+
+    /* ═══════════════════════════════════════════
+       LAYOUT
+       ═══════════════════════════════════════════ */
+
     --container-max-width: 800px;
     --container-padding: var(--space-4);
 
-    /* ========== TRANSIÇÕES ========== */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
-    --transition-slow: 350ms ease;
+    /* ═══════════════════════════════════════════
+       Z-INDEX (escala controlada)
+       ═══════════════════════════════════════════ */
+
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+
+    /* ═══════════════════════════════════════════
+       BREAKPOINTS (para referência em JS)
+       ═══════════════════════════════════════════ */
+
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+
+    /* ═══════════════════════════════════════════
+       TRANSIÇÕES
+       ═══════════════════════════════════════════ */
+
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
