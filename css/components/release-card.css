@@ -2,17 +2,48 @@
     ================================================
     RELEASE-CARD.CSS — Cards de versão
     ================================================
-    AQUI VAMOS TRABALHAR NO DIA 4!
-    Por enquanto, estrutura mínima.
+    Cada release card representa uma versão do
+    software. Eles se alternam entre esquerda e
+    direita na timeline (desktop).
 */
 
+/* ═══════════════════════════════════════════
+   RELEASE CARD — Container principal
+   ═══════════════════════════════════════════ */
+
 .release-card {
-    background-color: var(--color-bg-card);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-6);
     margin-bottom: var(--space-8);
-    padding: var(--space-6);
 }
+
+/* Remove margem do último card */
+.release-card:last-child {
+    margin-bottom: 0;
+}
+
+/* ═══════════════════════════════════════════
+   CONTEÚDO DO CARD
+   ═══════════════════════════════════════════ */
+
+.release-card__content {
+    flex: 1;
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-6);
+    transition: box-shadow var(--transition-base);
+}
+
+.release-card__content:hover {
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* ═══════════════════════════════════════════
+   HEADER DO CARD
+   ═══════════════════════════════════════════ */
 
 .release-card__header {
     margin-bottom: var(--space-4);
@@ -28,12 +59,19 @@
 .release-card__date {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
 }
 
 .release-card__title {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
 }
+
+/* ═══════════════════════════════════════════
+   CATEGORIAS DE MUDANÇAS
+   ═══════════════════════════════════════════ */
 
 .changes__category {
     display: flex;
@@ -45,6 +83,18 @@
     margin-top: var(--space-4);
     margin-bottom: var(--space-2);
 }
+
+.changes__category:first-child {
+    margin-top: 0;
+}
+
+.changes__icon {
+    font-size: var(--font-size-base);
+}
+
+/* ═══════════════════════════════════════════
+   LISTA DE MUDANÇAS
+   ═══════════════════════════════════════════ */
 
 .changes__list {
     display: flex;

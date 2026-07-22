@@ -2,9 +2,14 @@
     ================================================
     BADGES.CSS — Badges e tags de categoria
     ================================================
-    AQUI VAMOS TRABALHAR NO DIA 4!
-    Por enquanto, estilos básicos.
+    Badges são usados para versões (v2.5.0).
+    Tags são usadas para categorizar mudanças
+    (feature, improvement, bugfix).
 */
+
+/* ═══════════════════════════════════════════
+   BADGE — Versão do release
+   ═══════════════════════════════════════════ */
 
 .badge {
     display: inline-flex;
@@ -13,36 +18,54 @@
     border-radius: var(--radius-full);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.025em;
+    letter-spacing: var(--letter-spacing-wide);
 }
 
 .badge--version {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-500) 0%,
+        var(--color-primary-600) 100%
+    );
     color: var(--color-text-inverse);
 }
+
+/* ═══════════════════════════════════════════
+   TAGS — Categorias de mudança
+   ═══════════════════════════════════════════ */
 
 .changes__tag {
     display: inline-flex;
     align-items: center;
     padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-medium);
     white-space: nowrap;
     flex-shrink: 0;
+    border: 1px solid transparent;
 }
 
 .changes__tag--feature {
     background-color: var(--color-tag-feature-bg);
     color: var(--color-tag-feature);
+    border-color: var(--color-tag-feature-border);
 }
 
 .changes__tag--improvement {
     background-color: var(--color-tag-improvement-bg);
     color: var(--color-tag-improvement);
+    border-color: var(--color-tag-improvement-border);
 }
 
 .changes__tag--bugfix {
     background-color: var(--color-tag-bugfix-bg);
     color: var(--color-tag-bugfix);
+    border-color: var(--color-tag-bugfix-border);
+}
+
+.changes__tag--breaking {
+    background-color: var(--color-tag-breaking-bg);
+    color: var(--color-tag-breaking);
+    border-color: var(--color-tag-breaking-border);
 }

@@ -2,10 +2,52 @@
     ================================================
     TIMELINE.CSS — Linha do tempo vertical
     ================================================
-    AQUI VAMOS TRABALHAR NO DIA 3!
-    Por enquanto, estrutura mínima.
+    A timeline é a estrutura que envolve todos os
+    release cards. Ela cria a linha vertical central
+    e posiciona os markers (bolinhas).
 */
 
+/* Container da timeline */
 .timeline {
     position: relative;
+    padding: var(--space-4) 0;
+}
+
+/* Linha vertical central */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary-500) 0%,
+        var(--color-timeline-line) 100%
+    );
+    transform: translateX(-50%);
+    z-index: var(--z-base);
+}
+
+/* ═══════════════════════════════════════════
+   MARKER — Bolinha da timeline
+   ═══════════════════════════════════════════ */
+
+.release-card__marker {
+    position: absolute;
+    left: 50%;
+    top: var(--space-6);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.marker__dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-timeline-dot);
+    border: 3px solid var(--color-bg-body);
+    box-shadow: 0 0 0 4px var(--color-timeline-dot-ring);
 }
