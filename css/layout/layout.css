@@ -2,11 +2,14 @@
     ================================================
     LAYOUT.CSS — Estrutura visual da página
     ================================================
-    AQUI VAMOS TRABALHAR NO DIA 3!
-    Por enquanto, só estrutura mínima.
+    Define o container, header, main e footer.
+    Usa Flexbox para alinhamentos simples.
 */
 
-/* Container centralizado com largura máxima */
+/* ═══════════════════════════════════════════
+   CONTAINER
+   ═══════════════════════════════════════════ */
+
 .container {
     width: 100%;
     max-width: var(--container-max-width);
@@ -16,7 +19,10 @@
     padding-right: var(--container-padding);
 }
 
-/* Header */
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+
 .changelog-header {
     background-color: var(--color-bg-header);
     padding: var(--space-16) 0;
@@ -28,20 +34,23 @@
     display: inline-block;
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-primary);
+    color: var(--color-primary-500);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: var(--letter-spacing-wider);
     margin-bottom: var(--space-4);
 }
 
+/* 
+   TÍTULO — COR SÓLIDA (mais seguro que gradiente)
+   O gradiente com background-clip:text pode falhar
+   em alguns navegadores ou situações.
+*/
 .header__title {
     font-size: var(--font-size-4xl);
     font-weight: var(--font-weight-extrabold);
     margin-bottom: var(--space-4);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-600);
+    letter-spacing: var(--letter-spacing-tighter);
 }
 
 .header__description {
@@ -49,14 +58,22 @@
     color: var(--color-text-secondary);
     max-width: 600px;
     margin: 0 auto;
+    line-height: var(--line-height-relaxed);
 }
 
-/* Main */
+/* ═══════════════════════════════════════════
+   MAIN
+   ═══════════════════════════════════════════ */
+
 .changelog-main {
     padding: var(--space-12) 0;
+    background-color: var(--color-bg-body);
 }
 
-/* Footer */
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+
 .changelog-footer {
     background-color: var(--color-bg-footer);
     padding: var(--space-8) 0;
@@ -70,6 +87,10 @@
 }
 
 .footer__version {
-    color: var(--color-text-muted);
+    color: var(--color-gray-500);
     font-size: var(--font-size-xs);
+}
+
+.footer__version time {
+    color: var(--color-gray-400);
 }
