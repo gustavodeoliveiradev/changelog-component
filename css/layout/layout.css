@@ -40,11 +40,6 @@
     margin-bottom: var(--space-4);
 }
 
-/* 
-   TÍTULO — COR SÓLIDA (mais seguro que gradiente)
-   O gradiente com background-clip:text pode falhar
-   em alguns navegadores ou situações.
-*/
 .header__title {
     font-size: var(--font-size-4xl);
     font-weight: var(--font-weight-extrabold);
@@ -68,6 +63,7 @@
 .changelog-main {
     padding: var(--space-12) 0;
     background-color: var(--color-bg-body);
+    min-height: 60vh;
 }
 
 /* ═══════════════════════════════════════════

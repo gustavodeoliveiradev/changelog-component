@@ -2,18 +2,47 @@
     ================================================
     TIMELINE.CSS — Linha do tempo vertical
     ================================================
-    A timeline é a estrutura que envolve todos os
+    A timeline é o container que envolve todos os
     release cards. Ela cria a linha vertical central
     e posiciona os markers (bolinhas).
+
+    ESTRUTURA VISUAL (desktop):
+
+         ┌─────────────┐
+         │   Card 1    │  → direita (ímpar)
+         └─────────────┘
+               ●
+    ───────────┼───────────  ← linha vertical
+               │
+    ┌──────────┘
+    │  Card 2      │  → esquerda (par)
+    └──────────────┘
+               ●
+    ───────────┼───────────
+               │
+               └───────────┐
+                           │ Card 3 → direita
+                           └────────┘
 */
 
-/* Container da timeline */
+/* ═══════════════════════════════════════════
+   CONTAINER DA TIMELINE
+   ═══════════════════════════════════════════ */
+
 .timeline {
     position: relative;
     padding: var(--space-4) 0;
 }
 
-/* Linha vertical central */
+/*
+   LINHA VERTICAL CENTRAL
+   ──────────────────────
+   Usamos ::before no container .timeline para
+   criar a linha. Ela fica no centro (left: 50%)
+   e se estende de topo a base.
+
+   z-index: 0 → fica ATRÁS dos cards
+*/
 .timeline::before {
     content: '';
     position: absolute;
@@ -24,7 +53,9 @@
     background: linear-gradient(
         to bottom,
         var(--color-primary-500) 0%,
-        var(--color-timeline-line) 100%
+        var(--color-timeline-line) 30%,
+        var(--color-timeline-line) 70%,
+        var(--color-primary-500) 100%
     );
     transform: translateX(-50%);
     z-index: var(--z-base);
@@ -32,7 +63,14 @@
 
 /* ═══════════════════════════════════════════
    MARKER — Bolinha da timeline
-   ═══════════════════════════════════════════ */
+   ═══════════════════════════════════════════
+
+   Cada release-card tem um marker que fica
+   posicionado no centro da linha vertical.
+
+   O marker é um elemento dentro do card, mas
+   posicionado com absolute no centro.
+*/
 
 .release-card__marker {
     position: absolute;
@@ -42,12 +80,41 @@
     z-index: 1;
 }
 
+/*
+   A bolinha em si
+   ───────────────
+   - Tamanho: 16px
+   - Cor: primária (indigo)
+   - Borda branca: separa da linha
+   - Ring (anel): glow suave ao redor
+*/
 .marker__dot {
     display: block;
     width: 16px;
     height: 16px;
     border-radius: var(--radius-full);
-    background-color: var(--color-timeline-dot);
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-400) 0%,
+        var(--color-primary-600) 100%
+    );
     border: 3px solid var(--color-bg-body);
-    box-shadow: 0 0 0 4px var(--color-timeline-dot-ring);
+    box-shadow: 
+        0 0 0 4px var(--color-timeline-dot-ring),
+        0 2px 8px rgba(99, 102, 241, 0.3);
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+/*
+   Efeito hover na bolinha
+   ──────────────────────
+   Quando o mouse passa sobre o card, a bolinha
+   "pulsa" levemente.
+*/
+.release-card:hover .marker__dot {
+    transform: scale(1.2);
+    box-shadow: 
+        0 0 0 6px var(--color-timeline-dot-ring),
+        0 4px 12px rgba(99, 102, 241, 0.4);
 }

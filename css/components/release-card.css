@@ -5,6 +5,14 @@
     Cada release card representa uma versão do
     software. Eles se alternam entre esquerda e
     direita na timeline (desktop).
+
+    ESTRATÉGIA DE POSICIONAMENTO:
+    ─────────────────────────────
+    1. Cada card é um flex container
+    2. O marker fica no centro (absolute)
+    3. O conteúdo ocupa ~45% da largura
+    4. nth-child(odd)  → conteúdo à DIREITA
+    5. nth-child(even) → conteúdo à ESQUERDA
 */
 
 /* ═══════════════════════════════════════════
@@ -15,7 +23,6 @@
     position: relative;
     display: flex;
     align-items: flex-start;
-    gap: var(--space-6);
     margin-bottom: var(--space-8);
 }
 
@@ -25,20 +32,87 @@
 }
 
 /* ═══════════════════════════════════════════
+   POSICIONAMENTO ALTERNADO (DESKTOP)
+   ═══════════════════════════════════════════
+
+   Card ÍMPAR (1º, 3º, 5º...):
+   → Conteúdo fica à DIREITA da linha
+   → Espaço vazio à ESQUERDA
+*/
+.release-card:nth-child(odd) {
+    flex-direction: row;
+}
+
+.release-card:nth-child(odd) .release-card__content {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/*
+   Card PAR (2º, 4º, 6º...):
+   → Conteúdo fica à ESQUERDA da linha
+   → Espaço vazio à DIREITA
+*/
+.release-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.release-card:nth-child(even) .release-card__content {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* ═══════════════════════════════════════════
    CONTEÚDO DO CARD
    ═══════════════════════════════════════════ */
 
 .release-card__content {
-    flex: 1;
+    width: calc(50% - var(--space-8));
     background-color: var(--color-bg-card);
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-card);
     padding: var(--space-6);
-    transition: box-shadow var(--transition-base);
+    transition: 
+        box-shadow var(--transition-base),
+        transform var(--transition-base);
+    position: relative;
 }
 
+/* Efeito hover no card */
 .release-card__content:hover {
     box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+
+/*
+   Setinha do card (tooltip pointer)
+   ─────────────────────────────────
+   Um pequeno triângulo que aponta para
+   a linha do tempo, conectando visualmente
+   o card ao seu marker.
+*/
+.release-card__content::before {
+    content: '';
+    position: absolute;
+    top: var(--space-6);
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+/* Setinha para cards à DIREITA (ímpares) */
+.release-card:nth-child(odd) .release-card__content::before {
+    left: -8px;
+    border-width: 8px 8px 8px 0;
+    border-color: transparent var(--color-bg-card) transparent transparent;
+}
+
+/* Setinha para cards à ESQUERDA (pares) */
+.release-card:nth-child(even) .release-card__content::before {
+    right: -8px;
+    left: auto;
+    border-width: 8px 0 8px 8px;
+    border-color: transparent transparent transparent var(--color-bg-card);
 }
 
 /* ═══════════════════════════════════════════
@@ -54,6 +128,7 @@
     align-items: center;
     gap: var(--space-3);
     margin-bottom: var(--space-3);
+    flex-wrap: wrap;
 }
 
 .release-card__date {
@@ -90,6 +165,7 @@
 
 .changes__icon {
     font-size: var(--font-size-base);
+    line-height: 1;
 }
 
 /* ═══════════════════════════════════════════
