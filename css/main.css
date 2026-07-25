@@ -8,10 +8,6 @@
     1. Base: reset, variáveis, tipografia
     2. Layout: estrutura da página
     3. Componentes: elementos reutilizáveis
-
-    Por que separar? Cada arquivo tem UMA
-    responsabilidade (Single Responsibility Principle).
-    Isso facilita manutenção e debugging.
 */
 
 /* ========== BASE ========== */
@@ -24,7 +20,7 @@
 @import url('layout/responsive.css');
 
 /* ========== COMPONENTS ========== */
+@import url('components/animations.css');
 @import url('components/timeline.css');
 @import url('components/release-card.css');
 @import url('components/badges.css');
-@import url('components/animations.css');

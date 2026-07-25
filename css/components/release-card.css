@@ -1,18 +1,10 @@
 /*
     ================================================
-    RELEASE-CARD.CSS — Cards de versão
+    RELEASE-CARD.CSS — Cards de versão polidos
     ================================================
     Cada release card representa uma versão do
     software. Eles se alternam entre esquerda e
     direita na timeline (desktop).
-
-    ESTRATÉGIA DE POSICIONAMENTO:
-    ─────────────────────────────
-    1. Cada card é um flex container
-    2. O marker fica no centro (absolute)
-    3. O conteúdo ocupa ~45% da largura
-    4. nth-child(odd)  → conteúdo à DIREITA
-    5. nth-child(even) → conteúdo à ESQUERDA
 */
 
 /* ═══════════════════════════════════════════
@@ -24,7 +16,18 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: var(--space-8);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fade-in-up 0.6s ease forwards;
 }
+
+/* Delay escalonado para cada card (efeito cascata) */
+.release-card:nth-child(1) { animation-delay: 0.1s; }
+.release-card:nth-child(2) { animation-delay: 0.2s; }
+.release-card:nth-child(3) { animation-delay: 0.3s; }
+.release-card:nth-child(4) { animation-delay: 0.4s; }
+.release-card:nth-child(5) { animation-delay: 0.5s; }
+.release-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Remove margem do último card */
 .release-card:last-child {
@@ -33,12 +36,8 @@
 
 /* ═══════════════════════════════════════════
    POSICIONAMENTO ALTERNADO (DESKTOP)
-   ═══════════════════════════════════════════
+   ═══════════════════════════════════════════ */
 
-   Card ÍMPAR (1º, 3º, 5º...):
-   → Conteúdo fica à DIREITA da linha
-   → Espaço vazio à ESQUERDA
-*/
 .release-card:nth-child(odd) {
     flex-direction: row;
 }
@@ -48,11 +47,6 @@
     margin-right: 0;
 }
 
-/*
-   Card PAR (2º, 4º, 6º...):
-   → Conteúdo fica à ESQUERDA da linha
-   → Espaço vazio à DIREITA
-*/
 .release-card:nth-child(even) {
     flex-direction: row-reverse;
 }
@@ -76,20 +70,20 @@
         box-shadow var(--transition-base),
         transform var(--transition-base);
     position: relative;
+    border: 1px solid transparent;
 }
 
 /* Efeito hover no card */
 .release-card__content:hover {
     box-shadow: var(--shadow-card-hover);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-color: var(--color-primary-100);
 }
 
 /*
    Setinha do card (tooltip pointer)
    ─────────────────────────────────
-   Um pequeno triângulo que aponta para
-   a linha do tempo, conectando visualmente
-   o card ao seu marker.
+   Triângulo CSS que aponta para a linha do tempo
 */
 .release-card__content::before {
     content: '';
@@ -98,6 +92,7 @@
     width: 0;
     height: 0;
     border-style: solid;
+    transition: border-color var(--transition-fast);
 }
 
 /* Setinha para cards à DIREITA (ímpares) */
@@ -107,12 +102,20 @@
     border-color: transparent var(--color-bg-card) transparent transparent;
 }
 
+.release-card:nth-child(odd) .release-card__content:hover::before {
+    border-color: transparent var(--color-primary-50) transparent transparent;
+}
+
 /* Setinha para cards à ESQUERDA (pares) */
 .release-card:nth-child(even) .release-card__content::before {
     right: -8px;
     left: auto;
     border-width: 8px 0 8px 8px;
     border-color: transparent transparent transparent var(--color-bg-card);
+}
+
+.release-card:nth-child(even) .release-card__content:hover::before {
+    border-color: transparent transparent transparent var(--color-primary-50);
 }
 
 /* ═══════════════════════════════════════════
@@ -185,4 +188,30 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
+    padding: var(--space-1) 0;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+}
+
+.changes__item:hover {
+    background-color: var(--color-gray-50);
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+    margin-left: calc(-1 * var(--space-2));
+    margin-right: calc(-1 * var(--space-2));
+}
+
+/* ═══════════════════════════════════════════
+   ANIMAÇÃO DE ENTRADA
+   ═══════════════════════════════════════════ */
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

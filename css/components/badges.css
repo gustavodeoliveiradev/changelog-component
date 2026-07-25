@@ -1,10 +1,10 @@
 /*
     ================================================
-    BADGES.CSS — Badges e tags de categoria
+    BADGES.CSS — Badges e tags de categoria premium
     ================================================
     Badges são usados para versões (v2.5.0).
     Tags são usadas para categorizar mudanças
-    (feature, improvement, bugfix).
+    (feature, improvement, bugfix, breaking).
 */
 
 /* ═══════════════════════════════════════════
@@ -19,6 +19,13 @@
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--letter-spacing-wide);
+    transition: 
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.badge:hover {
+    transform: scale(1.05);
 }
 
 .badge--version {
@@ -28,6 +35,11 @@
         var(--color-primary-600) 100%
     );
     color: var(--color-text-inverse);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.badge--version:hover {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
 /* ═══════════════════════════════════════════
@@ -44,6 +56,13 @@
     white-space: nowrap;
     flex-shrink: 0;
     border: 1px solid transparent;
+    transition: 
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.changes__tag:hover {
+    transform: scale(1.05);
 }
 
 .changes__tag--feature {
@@ -52,10 +71,18 @@
     border-color: var(--color-tag-feature-border);
 }
 
+.changes__tag--feature:hover {
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+}
+
 .changes__tag--improvement {
     background-color: var(--color-tag-improvement-bg);
     color: var(--color-tag-improvement);
     border-color: var(--color-tag-improvement-border);
+}
+
+.changes__tag--improvement:hover {
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 .changes__tag--bugfix {
@@ -64,8 +91,16 @@
     border-color: var(--color-tag-bugfix-border);
 }
 
+.changes__tag--bugfix:hover {
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
+}
+
 .changes__tag--breaking {
     background-color: var(--color-tag-breaking-bg);
     color: var(--color-tag-breaking);
     border-color: var(--color-tag-breaking-border);
+}
+
+.changes__tag--breaking:hover {
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
 }
