@@ -203,7 +203,7 @@ Este projeto está licenciado sob a licença **MIT** — veja o arquivo [LICENSE
 **Gustavo de Oliveira**
 
 - GitHub: [@gustavodeoliveiradev](https://github.com/gustavodeoliveiradev)
-- LinkedIn: [Gustavo de Oliveira](https://www.linkedin.com/in/lgustavodeoliveira/)
+- LinkedIn: *(adicione seu LinkedIn)*
 
 ---
 
