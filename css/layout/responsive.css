@@ -2,16 +2,22 @@
     ================================================
     RESPONSIVE.CSS — Responsividade completa
     ================================================
-    Mobile-first: estilos base são para mobile.
-    Media queries sobrescrevem para telas maiores.
+
+    BREAKPOINTS:
+    ────────────
+    • ≤ 600px  : Mobile — Cards centralizados, timeline por trás
+    • 601-767px: Tablet pequeno — Cards alternando
+    • 768px+   : Desktop — Layout completo
 */
 
 /* ═══════════════════════════════════════════
-   MOBILE (padrão — até 767px)
+   MOBILE (padrão — até 600px)
    ═══════════════════════════════════════════
+   Cards centralizados, timeline vertical por trás,
+   bolinha entre os cards.
 */
 
-/* Header precisa ficar ACIMA da timeline */
+/* Header sempre acima da timeline */
 .changelog-header {
     position: relative;
     z-index: 10;
@@ -33,46 +39,66 @@
     padding-right: var(--space-4);
 }
 
-/* Timeline à esquerda em mobile */
+/* Timeline centralizada por trás dos cards */
 .timeline {
     position: relative;
 }
 
 .timeline::before {
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+/* Cards empilhados verticalmente, centralizados */
 .release-card {
-    flex-direction: row !important;
-    padding-left: 48px;
+    flex-direction: column !important;
+    align-items: center;
     margin-bottom: var(--space-6);
+    padding-left: 0;
 }
 
+.release-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Marker entre os cards (acima do card) */
 .release-card__marker {
-    left: 20px !important;
-    transform: translateX(-50%) !important;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-bottom: var(--space-3);
+    order: -1; /* Coloca o marker ANTES do conteúdo */
 }
 
+.marker__dot {
+    width: 14px;
+    height: 14px;
+}
+
+/* Card ocupa quase toda a largura, centralizado */
 .release-card__content {
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    width: calc(100% - var(--space-8));
+    max-width: 400px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
+/* Esconde as setinhas em mobile */
 .release-card__content::before {
-    display: none;
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════════
-   TABLET (768px - 1023px)
+   TABLET PEQUENO (601px - 767px)
    ═══════════════════════════════════════════
    AQUI ATIVAMOS O LAYOUT ALTERNADO!
-   A partir de 768px já mostramos cards dos dois lados.
+   Cards um de cada lado da timeline.
 */
 
-@media (min-width: 768px) {
+@media (min-width: 601px) {
     .changelog-header {
-        padding: var(--space-14) 0;
+        padding: var(--space-12) 0;
     }
 
     .header__title {
@@ -86,14 +112,44 @@
     /* Timeline central */
     .timeline::before {
         left: 50%;
+        transform: translateX(-50%);
     }
 
-    /* Cards com posicionamento alternado */
+    /* Cards em linha, alternando */
     .release-card {
+        flex-direction: row !important;
+        align-items: flex-start;
         padding-left: 0;
         margin-bottom: var(--space-8);
     }
 
+    /* Marker no centro */
+    .release-card__marker {
+        position: absolute;
+        left: 50%;
+        top: var(--space-6);
+        transform: translateX(-50%);
+        margin-bottom: 0;
+        order: 0;
+    }
+
+    .marker__dot {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Cards com largura limitada */
+    .release-card__content {
+        width: calc(50% - var(--space-8));
+        max-width: none;
+    }
+
+    /* Setinhas visíveis */
+    .release-card__content::before {
+        display: block !important;
+    }
+
+    /* Card ÍMPAR → DIREITA */
     .release-card:nth-child(odd) {
         flex-direction: row !important;
     }
@@ -103,6 +159,7 @@
         margin-right: 0 !important;
     }
 
+    /* Card PAR → ESQUERDA */
     .release-card:nth-child(even) {
         flex-direction: row-reverse !important;
     }
@@ -111,34 +168,30 @@
         margin-left: 0 !important;
         margin-right: auto !important;
     }
-
-    /* Marker no centro */
-    .release-card__marker {
-        left: 50% !important;
-    }
-
-    /* Cards com largura limitada */
-    .release-card__content {
-        width: calc(50% - var(--space-8));
-    }
-
-    /* Setinhas visíveis */
-    .release-card__content::before {
-        display: block;
-    }
 }
 
 /* ═══════════════════════════════════════════
-   DESKTOP (1024px+)
+   TABLET GRANDE / DESKTOP (768px+)
    ═══════════════════════════════════════════
 */
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .container {
         padding-left: var(--space-6);
         padding-right: var(--space-6);
     }
 
+    .changelog-header {
+        padding: var(--space-14) 0;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   DESKTOP GRANDE (1024px+)
+   ═══════════════════════════════════════════
+*/
+
+@media (min-width: 1024px) {
     .changelog-header {
         padding: var(--space-16) 0;
     }
