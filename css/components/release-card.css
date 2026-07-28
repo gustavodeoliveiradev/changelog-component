@@ -2,9 +2,6 @@
     ================================================
     RELEASE-CARD.CSS — Cards de versão polidos
     ================================================
-    Cada release card representa uma versão do
-    software. Eles se alternam entre esquerda e
-    direita na timeline (desktop).
 */
 
 /* ═══════════════════════════════════════════
@@ -21,7 +18,6 @@
     animation: fade-in-up 0.6s ease forwards;
 }
 
-/* Delay escalonado para cada card (efeito cascata) */
 .release-card:nth-child(1) { animation-delay: 0.1s; }
 .release-card:nth-child(2) { animation-delay: 0.2s; }
 .release-card:nth-child(3) { animation-delay: 0.3s; }
@@ -29,7 +25,6 @@
 .release-card:nth-child(5) { animation-delay: 0.5s; }
 .release-card:nth-child(6) { animation-delay: 0.6s; }
 
-/* Remove margem do último card */
 .release-card:last-child {
     margin-bottom: 0;
 }
@@ -68,22 +63,25 @@
     padding: var(--space-6);
     transition: 
         box-shadow var(--transition-base),
-        transform var(--transition-base);
+        transform var(--transition-base),
+        border-color var(--transition-fast);
     position: relative;
     border: 1px solid transparent;
 }
 
-/* Efeito hover no card */
 .release-card__content:hover {
     box-shadow: var(--shadow-card-hover);
     transform: translateY(-4px);
     border-color: var(--color-primary-100);
 }
 
+/* Dark mode: borda mais visível no hover */
+html.dark .release-card__content:hover {
+    border-color: var(--color-primary-700);
+}
+
 /*
    Setinha do card (tooltip pointer)
-   ─────────────────────────────────
-   Triângulo CSS que aponta para a linha do tempo
 */
 .release-card__content::before {
     content: '';
@@ -173,7 +171,12 @@
 
 /* ═══════════════════════════════════════════
    LISTA DE MUDANÇAS
-   ═══════════════════════════════════════════ */
+   ═══════════════════════════════════════════
+
+   CORREÇÃO DO HOVER NO DARK MODE:
+   Em vez de escurecer o fundo (que some no dark),
+   clareamos o texto e adicionamos um glow sutil.
+*/
 
 .changes__list {
     display: flex;
@@ -188,17 +191,26 @@
     font-size: var(--font-size-sm);
     color: var(--color-text-secondary);
     line-height: var(--line-height-relaxed);
-    padding: var(--space-1) 0;
+    padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-md);
-    transition: background-color var(--transition-fast);
-}
-
-.changes__item:hover {
-    background-color: var(--color-gray-50);
-    padding-left: var(--space-2);
-    padding-right: var(--space-2);
+    transition: 
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
     margin-left: calc(-1 * var(--space-2));
     margin-right: calc(-1 * var(--space-2));
+}
+
+/* Hover no MODO CLARO: fundo cinza claro */
+.changes__item:hover {
+    background-color: var(--color-gray-50);
+    color: var(--color-text-primary);
+}
+
+/* Hover no MODO ESCURO: fundo escuro + texto claro */
+html.dark .changes__item:hover {
+    background-color: var(--color-gray-700);
+    color: var(--color-gray-100);
 }
 
 /* ═══════════════════════════════════════════

@@ -9,39 +9,13 @@
 /* ═══════════════════════════════════════════
    MOBILE (padrão — até 767px)
    ═══════════════════════════════════════════
-   Em telas pequenas, a timeline fica simples:
-   - Cards empilhados verticalmente
-   - Linha vertical à esquerda
-   - Cards ocupam 100% da largura
 */
 
-.timeline::before {
-    left: 20px;
-}
-
-.release-card {
-    flex-direction: row !important;
-    padding-left: 48px;
-    margin-bottom: var(--space-6);
-}
-
-.release-card__marker {
-    left: 20px;
-    transform: translateX(-50%);
-}
-
-.release-card__content {
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-.release-card__content::before {
-    display: none;
-}
-
-/* Header menor em mobile */
+/* Header precisa ficar ACIMA da timeline */
 .changelog-header {
+    position: relative;
+    z-index: 10;
+    background-color: var(--color-bg-header);
     padding: var(--space-10) 0;
 }
 
@@ -59,10 +33,41 @@
     padding-right: var(--space-4);
 }
 
+/* Timeline à esquerda em mobile */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    left: 20px;
+}
+
+.release-card {
+    flex-direction: row !important;
+    padding-left: 48px;
+    margin-bottom: var(--space-6);
+}
+
+.release-card__marker {
+    left: 20px !important;
+    transform: translateX(-50%) !important;
+}
+
+.release-card__content {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.release-card__content::before {
+    display: none;
+}
+
 /* ═══════════════════════════════════════════
    TABLET (768px - 1023px)
    ═══════════════════════════════════════════
-   Ajustes intermediários.
+   AQUI ATIVAMOS O LAYOUT ALTERNADO!
+   A partir de 768px já mostramos cards dos dois lados.
 */
 
 @media (min-width: 768px) {
@@ -76,21 +81,6 @@
 
     .header__description {
         font-size: var(--font-size-lg);
-    }
-}
-
-/* ═══════════════════════════════════════════
-   DESKTOP (1024px+)
-   ═══════════════════════════════════════════
-   Layout completo com timeline central e
-   cards alternando esquerda/direita.
-*/
-
-@media (min-width: 1024px) {
-    /* Container com padding maior */
-    .container {
-        padding-left: var(--space-6);
-        padding-right: var(--space-6);
     }
 
     /* Timeline central */
@@ -124,7 +114,7 @@
 
     /* Marker no centro */
     .release-card__marker {
-        left: 50%;
+        left: 50% !important;
     }
 
     /* Cards com largura limitada */
@@ -136,8 +126,19 @@
     .release-card__content::before {
         display: block;
     }
+}
 
-    /* Header grande */
+/* ═══════════════════════════════════════════
+   DESKTOP (1024px+)
+   ═══════════════════════════════════════════
+*/
+
+@media (min-width: 1024px) {
+    .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+
     .changelog-header {
         padding: var(--space-16) 0;
     }
