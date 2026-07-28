@@ -35,16 +35,19 @@
 <p align="center">
   <em>Timeline com cards alternando esquerda/direita</em>
 </p>
+<img src="assets/img.png">
 
 ### Mobile
 <p align="center">
   <em>Cards empilhados verticalmente com timeline à esquerda</em>
 </p>
+<img src="assets/img-mobile.png">
 
 ### Dark Mode
 <p align="center">
   <em>Tema escuro com todas as cores invertidas</em>
 </p>
+<img src="assets/img-dark-mode.png">
 
 ---
 

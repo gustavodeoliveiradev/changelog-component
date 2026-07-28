@@ -6,15 +6,14 @@
     BREAKPOINTS:
     ────────────
     • ≤ 600px  : Mobile — Cards centralizados, timeline por trás
-    • 601-767px: Tablet pequeno — Cards alternando
-    • 768px+   : Desktop — Layout completo
+    • 601px+   : Tablet/Desktop — Cards alternando
 */
 
 /* ═══════════════════════════════════════════
    MOBILE (padrão — até 600px)
    ═══════════════════════════════════════════
    Cards centralizados, timeline vertical por trás,
-   bolinha entre os cards.
+   bolinha ENTRE os cards (acima de cada card).
 */
 
 /* Header sempre acima da timeline */
@@ -42,18 +41,54 @@
 /* Timeline centralizada por trás dos cards */
 .timeline {
     position: relative;
+    padding-top: var(--space-4);
 }
 
 .timeline::before {
+    content: '';
+    position: absolute;
     left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary-500) 0%,
+        var(--color-timeline-line) 15%,
+        var(--color-timeline-line) 85%,
+        var(--color-primary-500) 100%
+    );
     transform: translateX(-50%);
+    z-index: 0;
 }
 
-/* Cards empilhados verticalmente, centralizados */
+/* ═══════════════════════════════════════════
+   RELEASE CARD — Layout mobile
+   ═══════════════════════════════════════════
+
+   Estrutura visual:
+
+        ●           ← Marker (bolinha)
+        │           ← Espaço entre marker e card
+   ┌───────────┐    ← Card centralizado
+   │  v2.5.0   │
+   │  Título   │
+   │  Conteúdo │
+   └───────────┘
+        │
+        ●           ← Próximo marker
+        │
+   ┌───────────┐
+   │  v2.4.0   │
+   └───────────┘
+*/
+
 .release-card {
-    flex-direction: column !important;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-8);
     padding-left: 0;
 }
 
@@ -61,27 +96,49 @@
     margin-bottom: 0;
 }
 
-/* Marker entre os cards (acima do card) */
+/*
+   MARKER — Bolinha ENTRE os cards
+   ───────────────────────────────
+   Posicionada como elemento separado,
+   NÃO dentro do card. Fica acima do card
+   com espaçamento adequado.
+*/
 .release-card__marker {
     position: relative;
     left: auto;
     top: auto;
     transform: none;
-    margin-bottom: var(--space-3);
-    order: -1; /* Coloca o marker ANTES do conteúdo */
+    margin-bottom: var(--space-4);
+    z-index: 1;
 }
 
 .marker__dot {
-    width: 14px;
-    height: 14px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-400) 0%,
+        var(--color-primary-600) 100%
+    );
+    border: 3px solid var(--color-bg-body);
+    box-shadow: 
+        0 0 0 4px var(--color-timeline-dot-ring),
+        0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
-/* Card ocupa quase toda a largura, centralizado */
+/* Card ocupa largura máxima possível */
 .release-card__content {
-    width: calc(100% - var(--space-8));
-    max-width: 400px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-5);
+    position: relative;
+    z-index: 1;
+    border: 1px solid transparent;
 }
 
 /* Esconde as setinhas em mobile */
@@ -90,15 +147,14 @@
 }
 
 /* ═══════════════════════════════════════════
-   TABLET PEQUENO (601px - 767px)
+   TABLET / DESKTOP (601px+)
    ═══════════════════════════════════════════
-   AQUI ATIVAMOS O LAYOUT ALTERNADO!
-   Cards um de cada lado da timeline.
+   Layout alternado com cards dos dois lados.
 */
 
 @media (min-width: 601px) {
     .changelog-header {
-        padding: var(--space-12) 0;
+        padding: var(--space-14) 0;
     }
 
     .header__title {
@@ -109,28 +165,25 @@
         font-size: var(--font-size-lg);
     }
 
-    /* Timeline central */
-    .timeline::before {
-        left: 50%;
-        transform: translateX(-50%);
+    .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
     }
 
     /* Cards em linha, alternando */
     .release-card {
-        flex-direction: row !important;
+        flex-direction: row;
         align-items: flex-start;
-        padding-left: 0;
         margin-bottom: var(--space-8);
     }
 
-    /* Marker no centro */
+    /* Marker no centro da linha */
     .release-card__marker {
         position: absolute;
         left: 50%;
         top: var(--space-6);
         transform: translateX(-50%);
         margin-bottom: 0;
-        order: 0;
     }
 
     .marker__dot {
@@ -142,6 +195,8 @@
     .release-card__content {
         width: calc(50% - var(--space-8));
         max-width: none;
+        padding: var(--space-6);
+        border-radius: var(--radius-2xl);
     }
 
     /* Setinhas visíveis */
@@ -151,38 +206,22 @@
 
     /* Card ÍMPAR → DIREITA */
     .release-card:nth-child(odd) {
-        flex-direction: row !important;
+        flex-direction: row;
     }
 
     .release-card:nth-child(odd) .release-card__content {
-        margin-left: auto !important;
-        margin-right: 0 !important;
+        margin-left: auto;
+        margin-right: 0;
     }
 
     /* Card PAR → ESQUERDA */
     .release-card:nth-child(even) {
-        flex-direction: row-reverse !important;
+        flex-direction: row-reverse;
     }
 
     .release-card:nth-child(even) .release-card__content {
-        margin-left: 0 !important;
-        margin-right: auto !important;
-    }
-}
-
-/* ═══════════════════════════════════════════
-   TABLET GRANDE / DESKTOP (768px+)
-   ═══════════════════════════════════════════
-*/
-
-@media (min-width: 768px) {
-    .container {
-        padding-left: var(--space-6);
-        padding-right: var(--space-6);
-    }
-
-    .changelog-header {
-        padding: var(--space-14) 0;
+        margin-left: 0;
+        margin-right: auto;
     }
 }
 

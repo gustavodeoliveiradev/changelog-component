@@ -1,6 +1,6 @@
 /*
     ================================================
-    RELEASE-CARD.CSS — Cards de versão polidos
+    RELEASE-CARD.CSS — Cards de versão
     ================================================
 */
 
@@ -30,33 +30,10 @@
 }
 
 /* ═══════════════════════════════════════════
-   POSICIONAMENTO ALTERNADO (DESKTOP)
-   ═══════════════════════════════════════════ */
-
-.release-card:nth-child(odd) {
-    flex-direction: row;
-}
-
-.release-card:nth-child(odd) .release-card__content {
-    margin-left: auto;
-    margin-right: 0;
-}
-
-.release-card:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-.release-card:nth-child(even) .release-card__content {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-/* ═══════════════════════════════════════════
    CONTEÚDO DO CARD
    ═══════════════════════════════════════════ */
 
 .release-card__content {
-    width: calc(50% - var(--space-8));
     background-color: var(--color-bg-card);
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-card);
@@ -75,13 +52,13 @@
     border-color: var(--color-primary-100);
 }
 
-/* Dark mode: borda mais visível no hover */
 html.dark .release-card__content:hover {
     border-color: var(--color-primary-700);
 }
 
 /*
    Setinha do card (tooltip pointer)
+   Só visível em desktop (controlado no responsive.css)
 */
 .release-card__content::before {
     content: '';
@@ -171,12 +148,7 @@ html.dark .release-card__content:hover {
 
 /* ═══════════════════════════════════════════
    LISTA DE MUDANÇAS
-   ═══════════════════════════════════════════
-
-   CORREÇÃO DO HOVER NO DARK MODE:
-   Em vez de escurecer o fundo (que some no dark),
-   clareamos o texto e adicionamos um glow sutil.
-*/
+   ═══════════════════════════════════════════ */
 
 .changes__list {
     display: flex;
@@ -195,19 +167,16 @@ html.dark .release-card__content:hover {
     border-radius: var(--radius-md);
     transition: 
         background-color var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast);
-    margin-left: calc(-1 * var(--space-2));
-    margin-right: calc(-1 * var(--space-2));
+        color var(--transition-fast);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
-/* Hover no MODO CLARO: fundo cinza claro */
 .changes__item:hover {
     background-color: var(--color-gray-50);
     color: var(--color-text-primary);
 }
 
-/* Hover no MODO ESCURO: fundo escuro + texto claro */
 html.dark .changes__item:hover {
     background-color: var(--color-gray-700);
     color: var(--color-gray-100);
