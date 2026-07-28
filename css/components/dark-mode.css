@@ -1,6 +1,6 @@
 /*
     ================================================
-    DARK-MODE.CSS — Tema escuro
+    DARK-MODE.CSS — Tema escuro + Toggle Button
     ================================================
     Quando a classe .dark é adicionada ao <html>,
     todas as variáveis de cor são sobrescritas.
@@ -54,7 +54,10 @@ html.dark .marker__dot {
 
 /* ═══════════════════════════════════════════
    TOGGLE BUTTON
-   ═══════════════════════════════════════════ */
+   ═══════════════════════════════════════════
+   Botão flutuante no canto inferior direito
+   para alternar entre temas claro/escuro.
+*/
 
 .dark-mode-toggle {
     position: fixed;
@@ -80,6 +83,21 @@ html.dark .marker__dot {
         transform var(--transition-fast),
         box-shadow var(--transition-fast);
     z-index: var(--z-fixed);
+
+    /*
+       REMOVE O FLASH AZUL NO MOBILE
+       ───────────────────────────────
+       -webkit-tap-highlight-color: transparent
+       impede que o navegador adicione o overlay
+       azul ao tocar no botão.
+
+       user-select: none
+       impede seleção de texto no ícone.
+    */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .dark-mode-toggle:hover {
@@ -87,8 +105,15 @@ html.dark .marker__dot {
     box-shadow: var(--shadow-xl);
 }
 
+/*
+   REMOVE O :active QUE CAUSA O FLASH
+   ──────────────────────────────────
+   Em vez de scale(0.95) no click, usamos
+   apenas uma transição suave de opacidade.
+*/
 .dark-mode-toggle:active {
-    transform: scale(0.95);
+    opacity: 0.9;
+    transform: scale(1);
 }
 
 /* Ícone do sol (modo escuro ativo) */
