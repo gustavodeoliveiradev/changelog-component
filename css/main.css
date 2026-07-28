@@ -4,10 +4,6 @@
     ================================================
     Este arquivo importa TODOS os módulos CSS em
     ordem específica. A ordem importa!
-
-    1. Base: reset, variáveis, tipografia
-    2. Layout: estrutura da página
-    3. Componentes: elementos reutilizáveis
 */
 
 /* ========== BASE ========== */
@@ -21,6 +17,7 @@
 
 /* ========== COMPONENTS ========== */
 @import url('components/animations.css');
+@import url('components/dark-mode.css');
 @import url('components/timeline.css');
 @import url('components/release-card.css');
 @import url('components/badges.css');

@@ -1,42 +1,159 @@
 /*
     ================================================
-    RESPONSIVE.CSS — Adaptações para telas menores
+    RESPONSIVE.CSS — Responsividade completa
     ================================================
-    AQUI VAMOS TRABALHAR NO DIA 5!
-    Por enquanto, apenas ajustes básicos para
-    a timeline não quebrar em mobile.
+    Mobile-first: estilos base são para mobile.
+    Media queries sobrescrevem para telas maiores.
 */
 
-/*
-   MOBILE (até 767px)
-   ──────────────────
+/* ═══════════════════════════════════════════
+   MOBILE (padrão — até 767px)
+   ═══════════════════════════════════════════
    Em telas pequenas, a timeline fica simples:
+   - Cards empilhados verticalmente
+   - Linha vertical à esquerda
    - Cards ocupam 100% da largura
-   - Linha vertical fica à esquerda
-   - Markers ficam à esquerda
 */
-@media (max-width: 767px) {
+
+.timeline::before {
+    left: 20px;
+}
+
+.release-card {
+    flex-direction: row !important;
+    padding-left: 48px;
+    margin-bottom: var(--space-6);
+}
+
+.release-card__marker {
+    left: 20px;
+    transform: translateX(-50%);
+}
+
+.release-card__content {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.release-card__content::before {
+    display: none;
+}
+
+/* Header menor em mobile */
+.changelog-header {
+    padding: var(--space-10) 0;
+}
+
+.header__title {
+    font-size: var(--font-size-3xl);
+}
+
+.header__description {
+    font-size: var(--font-size-base);
+}
+
+/* Container com padding menor */
+.container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
+/* ═══════════════════════════════════════════
+   TABLET (768px - 1023px)
+   ═══════════════════════════════════════════
+   Ajustes intermediários.
+*/
+
+@media (min-width: 768px) {
+    .changelog-header {
+        padding: var(--space-14) 0;
+    }
+
+    .header__title {
+        font-size: var(--font-size-4xl);
+    }
+
+    .header__description {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ═══════════════════════════════════════════
+   DESKTOP (1024px+)
+   ═══════════════════════════════════════════
+   Layout completo com timeline central e
+   cards alternando esquerda/direita.
+*/
+
+@media (min-width: 1024px) {
+    /* Container com padding maior */
+    .container {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+
+    /* Timeline central */
     .timeline::before {
-        left: 20px;
+        left: 50%;
     }
 
+    /* Cards com posicionamento alternado */
     .release-card {
+        padding-left: 0;
+        margin-bottom: var(--space-8);
+    }
+
+    .release-card:nth-child(odd) {
         flex-direction: row !important;
-        padding-left: 48px;
     }
 
-    .release-card__marker {
-        left: 20px;
-        transform: translateX(-50%);
-    }
-
-    .release-card__content {
-        width: 100%;
-        margin-left: 0 !important;
+    .release-card:nth-child(odd) .release-card__content {
+        margin-left: auto !important;
         margin-right: 0 !important;
     }
 
+    .release-card:nth-child(even) {
+        flex-direction: row-reverse !important;
+    }
+
+    .release-card:nth-child(even) .release-card__content {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    /* Marker no centro */
+    .release-card__marker {
+        left: 50%;
+    }
+
+    /* Cards com largura limitada */
+    .release-card__content {
+        width: calc(50% - var(--space-8));
+    }
+
+    /* Setinhas visíveis */
     .release-card__content::before {
-        display: none;
+        display: block;
+    }
+
+    /* Header grande */
+    .changelog-header {
+        padding: var(--space-16) 0;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   TELAS MUITO GRANDES (1536px+)
+   ═══════════════════════════════════════════
+*/
+
+@media (min-width: 1536px) {
+    :root {
+        --container-max-width: 900px;
+    }
+
+    .release-card__content {
+        width: calc(50% - var(--space-10));
     }
 }
